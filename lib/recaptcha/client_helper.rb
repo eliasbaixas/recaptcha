@@ -53,6 +53,7 @@ module Recaptcha
     private
 
     def hash_to_json(hash)
+        return hash.to_json if hash.respond_to?(:to_json)
       result = "{"
       result << hash.map do |k, v|
         if ! v.is_a?(String) || k.to_s == "callback"
